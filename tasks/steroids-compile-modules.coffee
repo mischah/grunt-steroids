@@ -4,4 +4,5 @@ module.exports = (grunt) ->
 
   grunt.registerTask "steroids-compile-modules", "Compile modules in app/ to device-ready files", [
     'steroids-module-copy-assets'
+    'steroids-module-compile-views'
   ]

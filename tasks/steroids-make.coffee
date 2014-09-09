@@ -9,5 +9,4 @@ module.exports = (grunt) ->
     "steroids-copy-components"
     "steroids-configure"
     "steroids-compile-modules"
-    "steroids-legacy"
   ]
