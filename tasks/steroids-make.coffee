@@ -8,6 +8,5 @@ module.exports = (grunt) ->
     "steroids-compile-coffee"
     "steroids-concat-models"
     "steroids-compile-views"
-    "steroids-cordova-merges"
     "steroids-configure"
   ]
