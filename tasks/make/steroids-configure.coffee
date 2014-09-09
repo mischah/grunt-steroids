@@ -1,5 +1,5 @@
 
-SteroidsConfigure = require '../lib/SteroidsConfigure'
+SteroidsConfigure = require '../../lib/SteroidsConfigure'
 
 module.exports = (grunt)->
 
