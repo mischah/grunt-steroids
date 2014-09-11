@@ -12,8 +12,9 @@ module.exports = (grunt) ->
           src: "www/*.xml"
 
       "steroids-check-project-bower-dependencies":
-        bowerfile: './bower.json'
-        directory: 'www/components'
+        options:
+          bowerfile: './bower.json'
+          directory: 'bower_components'
 
     grunt.task.run "steroids-check-project-bower-dependencies"
     grunt.task.run "steroids-check-project-xml"

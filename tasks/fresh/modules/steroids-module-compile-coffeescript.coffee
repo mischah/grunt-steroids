@@ -2,6 +2,7 @@
 module.exports = (grunt)->
 
   grunt.loadNpmTasks "grunt-extend-config"
+  grunt.loadNpmTasks "grunt-contrib-coffee"
 
   grunt.extendConfig {
     "steroids-module-compile-coffeescript":
