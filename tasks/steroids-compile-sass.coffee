@@ -1,3 +1,8 @@
+# NOTE:
+# This is a legacy task. It's not in the legacy bundle because steroids
+# projects used to be created with two root tasks, steroids-make and
+# steroids-compile-sass.
+
 module.exports = (grunt)->
 
   grunt.loadNpmTasks 'grunt-contrib-sass'
