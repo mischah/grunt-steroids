@@ -7,25 +7,27 @@ module.exports = (grunt)->
   grunt.extendConfig {
     "steroids-module-compile-coffeescript":
       modules:
-        cwd: 'app'
+        expand: true
+        cwd: 'app/'
         src: '*'
-        dest: 'dist/app/'
+        dest: 'dist/app'
   }
 
   grunt.registerMultiTask "steroids-module-compile-coffeescript", "Compile Coffeescript from app/* to dist/*.coffee", ->
+    modules = {}
     @files.forEach (file) ->
-      [module] = file.src
- 
-      grunt.extendConfig
-        coffee:
-          modules:
-            options:
-              join: true
-            src: [
-              "#{file.cwd}/#{module}/index.coffee"
-              "#{file.cwd}/#{module}/**/*.coffee"
-            ]
-            dest: "#{file.dest}/#{module}.js"
-            ext: '.js'
+      [path] = file.src
+      [ignore..., module] = path.split '/'
+      modules["module-#{module}"] =
+        options:
+          join: true
+        src: [
+          "#{path}/index.coffee"
+          "#{path}/**/*.coffee"
+        ]
+        dest: "#{file.dest}.js"
+        ext: '.js'
 
-      grunt.task.run "coffee:modules"
+    grunt.extendConfig { coffee: modules }
+    for taskName, module of modules
+      grunt.task.run "coffee:#{taskName}"
