@@ -1,12 +1,13 @@
-
 module.exports = (grunt) ->
 
-  grunt.loadTasks("#{__dirname}/make")
+  grunt.loadTasks("#{__dirname}/legacy")
 
-  grunt.registerTask "steroids-make", "Create the dist/ folder that is copied to the device.", [
+  grunt.registerTask "steroids-make", "Compile a legacy Steroids app/ to dist/", [
     "steroids-clean-dist"
+    "steroids-copy-js-from-app"
     "steroids-copy-www"
-    "steroids-copy-components"
+    "steroids-compile-coffee"
+    "steroids-concat-models"
+    "steroids-compile-views"
     "steroids-configure"
-    "steroids-compile-modules"
   ]
