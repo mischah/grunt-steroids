@@ -31,7 +31,7 @@ module.exports = (grunt)->
           { view, module }
 
       context.modules = if context.module isnt 'common'
-          [context.module, 'common']
+          ['common', context.module]
         else
           ['common']
 
