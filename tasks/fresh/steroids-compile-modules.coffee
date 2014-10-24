@@ -6,4 +6,5 @@ module.exports = (grunt) ->
     'steroids-module-copy-assets'
     'steroids-module-compile-views'
     'steroids-module-compile-coffeescript'
+    'steroids-module-copy-default-native-styles'
   ]
