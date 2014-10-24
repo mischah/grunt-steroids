@@ -9,7 +9,7 @@ module.exports = (grunt)->
       native:
         expand: true
         cwd: "app/common/native-styles/"
-        src: "default.css"
+        src: "*.css"
         dest: "dist/native-styles"
         ext: ".css"
   }
