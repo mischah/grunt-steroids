@@ -10,6 +10,7 @@ module.exports = (grunt)->
         cwd: 'app'
         src: '*/assets/**/*'
         dest: 'dist/'
+        filter: 'isFile'
   }
 
   grunt.registerMultiTask "steroids-module-copy-assets", "Copy static assets from app/*/assets/ to dist/", ->
