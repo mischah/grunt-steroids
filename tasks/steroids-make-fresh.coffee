@@ -4,7 +4,6 @@ module.exports = (grunt) ->
     grunt.task.run [
       "steroids-check-project"
       "steroids-clean-dist"
-      "steroids-copy-www"
       "steroids-copy-components"
       "steroids-configure"
       "steroids-compile-modules"
