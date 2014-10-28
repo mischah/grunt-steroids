@@ -61,7 +61,7 @@ module.exports = (grunt) ->
         }
         return window.ag.data.resources = {
           options: {
-            baseUri: 'http://rest-api.testgyver.com/v1',
+            baseUrl: 'http://rest-api.testgyver.com/v1',
             headers: {
               steroidsApiKey: '28e8afec12e2e21c4a59c6895ce2b51186a52e2bb989d51eb774caafa32d96de',
               steroidsAppId: 11638
