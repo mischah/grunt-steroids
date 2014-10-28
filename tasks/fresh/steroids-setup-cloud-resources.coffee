@@ -24,7 +24,7 @@ module.exports = (grunt) ->
             contents.replace /<head>/g, """
               <head>
                 <!-- Cloud resource definition file for Supersonic Data -->
-                <script src="/cloud-resources.js" />
+                <script src="/cloud-resources.js"></script>
             """
         grunt.log.debug "Injected cloud-resources.js to #{src}"
         count++
