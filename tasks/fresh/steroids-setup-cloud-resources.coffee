@@ -16,6 +16,7 @@ module.exports = (grunt) ->
         src: 'dist/app/**/*.html'
   }
   grunt.registerMultiTask 'steroids-inject-cloud-resources-js', ->
+    count = 0
     @files.forEach (pair) ->
       pair.src.forEach (src) ->
         grunt.file.copy src, src,
@@ -25,7 +26,9 @@ module.exports = (grunt) ->
                 <!-- Cloud resource definition file for Supersonic Data -->
                 <script src="/cloud-resources.js" />
             """
-        console.log src
+        grunt.log.debug "Injected cloud-resources.js to #{src}"
+        count++
+    grunt.log.ok "Processed #{count} files"
 
   ###
   # 1: convert config/cloud-resources.raml to dist/cloud-resources.js
