@@ -52,14 +52,10 @@ module.exports = (grunt) ->
     # Generate js
     grunt.file.write dest, """
       (function(window) {
-        var _base;
         if (window.ag == null) {
           window.ag = {};
         }
-        if ((_base = window.ag).data == null) {
-          _base.data = {};
-        }
-        return window.ag.data.resources = {
+        window.ag.data = {
           options: {
             baseUrl: 'http://rest-api.testgyver.com/v1',
             headers: {
