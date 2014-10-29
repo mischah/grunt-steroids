@@ -43,8 +43,8 @@ module.exports = (grunt) ->
   }
   grunt.registerTask 'steroids-convert-cloud-raml-to-js', ->
     {src, dest} = @options()
-    
-    unless grunt.file.isFile "#{__dirname}/#{src}"
+
+    unless grunt.file.isFile src
       grunt.log.ok "Skipping, no cloud raml in place"
       return
 
