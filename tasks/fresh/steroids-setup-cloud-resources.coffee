@@ -1,4 +1,6 @@
 module.exports = (grunt) ->
+  ramlLoader = require 'ag-resource-loader-raml'
+
   grunt.loadNpmTasks "grunt-extend-config"
 
   grunt.registerTask 'steroids-setup-cloud-resources', ->
@@ -41,44 +43,35 @@ module.exports = (grunt) ->
   }
   grunt.registerTask 'steroids-convert-cloud-raml-to-js', ->
     {src, dest} = @options()
+    
+    unless grunt.file.isFile "#{__dirname}/#{src}"
+      grunt.log.ok "Skipping, no cloud raml in place"
+      return
 
-    # Found raml?
-    try
-      grunt.file.copy src, 'dist/cloud.raml'
-      grunt.log.ok "Wrote dist/cloud.raml"
-    catch e
-      grunt.log.error "Couldn't read #{src}"
-
-    # Generate js
-    grunt.file.write dest, """
-      (function(window) {
-        if (window.ag == null) {
-          window.ag = {};
-        }
-        window.ag.data = {
-          options: {
-            baseUrl: 'http://rest-api.testgyver.com/v1',
-            headers: {
-              steroidsApiKey: '28e8afec12e2e21c4a59c6895ce2b51186a52e2bb989d51eb774caafa32d96de',
-              steroidsAppId: 11638
+    done = @async()
+    ramlLoader
+      .loadLocalFile(src)
+      .toResourceBundle()
+      .then(
+        (bundle) ->
+          bundleString = JSON.stringify bundle, null, 2
+          setup = """
+            if (window.ag == null) {
+              window.ag = {};
             }
-          },
-          resources: {
-            task: {
-              schema: {
-                fields: {
-                  uid: {
-                    identity: true,
-                    type: 'string'
-                  },
-                  description: {
-                    type: 'string'
-                  }
-                }
-              }
-            }
-          }
-        };
-      })(window);
-    """
-    grunt.log.ok "Wrote #{dest}"
+          """
+          grunt.file.write dest, [
+            setup,
+            "\n",
+            "window.ag.data = ",
+            bundleString,
+            ";"
+          ].join ''
+      ).then(
+        ->
+          grunt.log.ok "Wrote #{dest}"
+          done()
+        (err) ->
+          grunt.log.ok "Failed to convert cloud resource raml to injectable js"
+          done err
+      )
