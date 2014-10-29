@@ -1,3 +1,7 @@
+#0.2.3 (2014-10-29)
+
+Do not compile SASS and SCSS files from www/components (the Bower components directory).
+
 #0.2.2 (2014-05-22)
 
 Support for *.android.scss and *.android.sass. Thanks to @couhajjou for the pull request!

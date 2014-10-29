@@ -20,7 +20,7 @@ module.exports = (grunt)->
             {
               expand: true
               cwd: 'www/'
-              src: ['**/!(_*|*.android).scss', '**/!(_*|*.android).sass']
+              src: ['**/!(_*|*.android).scss', '**/!(_*|*.android).sass', '!components/**']
               dest: 'dist/'
               ext: '.css'
             }
@@ -36,13 +36,13 @@ module.exports = (grunt)->
             {
               expand: true
               cwd: 'www/'
-              src: ['**/*.android.scss', '**/*.android.sass']
+              src: ['**/*.android.scss', '**/*.android.sass', '!components/**']
               dest: 'dist/'
               ext: '.android.css'
             }
           ]
 
-    sassFiles = grunt.file.expand(["www/**/*.scss", "www/**/*.sass", "app/**/*.scss", "app/**/*.sass"])
+    sassFiles = grunt.file.expand(["www/**/*.scss", "www/**/*.sass", "app/**/*.scss", "app/**/*.sass", "!www/components/**"])
 
     if sassFiles.length > 0
       grunt.log.writeln("SASS files found, attempting to compile them to dist/...")
