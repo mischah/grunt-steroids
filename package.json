@@ -31,10 +31,10 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt-contrib-nodeunit": "0.3.0",
     "grunt": "0.4.5"
   },
   "dependencies": {
+    "ag-resource-loader-raml": "^0.2.1",
     "chalk": "0.3.0",
     "lodash": "2.4.1",
     "wrench": "1.5.4",
