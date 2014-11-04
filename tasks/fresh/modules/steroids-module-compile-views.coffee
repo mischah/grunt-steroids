@@ -22,6 +22,8 @@ module.exports = (grunt)->
     layouts = {}
 
     @files.forEach (file) ->
+      destination = file.dest.replace /views\//, ''
+
       # Extract context
       context = do ([
           whole
@@ -29,6 +31,11 @@ module.exports = (grunt)->
           view
         ] = file.dest.match /app\/([^\/]*)\/views\/([^.]*)/) ->
           { view, module }
+
+      # Skip layouting if it's a _fragment
+      if (context.view.indexOf '_') is 0
+        grunt.file.copy file.src, destination
+        return
 
       context.modules = if context.module isnt 'common'
           ['common', context.module]
@@ -58,6 +65,4 @@ module.exports = (grunt)->
           view
 
       # Write file
-      destination = file.dest.replace /views\//, ''
-
       grunt.file.write destination, output
