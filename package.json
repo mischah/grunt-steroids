@@ -38,7 +38,7 @@
     "grunt": "0.4.5"
   },
   "dependencies": {
-    "ag-resource-loader-raml": "https://github.com/AppGyver/ag-resource-loader-raml.git#0.2.7",
+    "ag-resource-loader-raml": "https://github.com/AppGyver/ag-resource-loader-raml.git#v0.2.7",
     "chalk": "0.3.0",
     "lodash": "2.4.1",
     "wrench": "1.5.4",
