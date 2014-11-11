@@ -7,5 +7,7 @@ module.exports = (grunt) ->
       "steroids-copy-components"
       "steroids-configure"
       "steroids-compile-modules"
+      "steroids-compile-sass"
+      "steroids-copy-css"
       "steroids-setup-cloud-resources"
     ]
