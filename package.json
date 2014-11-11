@@ -38,7 +38,7 @@
     "grunt": "0.4.5"
   },
   "dependencies": {
-    "ag-resource-loader-raml": "AppGyver/ag-resource-loader-raml#v0.2.8",
+    "ag-resource-loader-raml-during-ezkus-holiday": "0.2.9",
     "chalk": "0.3.0",
     "lodash": "2.4.1",
     "wrench": "1.5.4",
