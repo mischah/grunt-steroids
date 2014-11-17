@@ -1,5 +1,5 @@
 module.exports = (grunt) ->
-  ramlLoader = require 'ag-resource-loader-raml-during-ezkus-holiday'
+  ramlLoader = require 'ag-resource-loader-raml'
 
   grunt.loadNpmTasks "grunt-extend-config"
 
