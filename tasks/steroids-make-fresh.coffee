@@ -5,6 +5,7 @@ module.exports = (grunt) ->
       "steroids-check-project"
       "steroids-clean-dist"
       "steroids-copy-www"
+      "steroids-compile-coffee"
       "steroids-copy-components"
       "steroids-configure"
       "steroids-compile-modules"
