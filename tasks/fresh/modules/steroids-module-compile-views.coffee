@@ -37,10 +37,10 @@ module.exports = (grunt)->
         grunt.file.copy file.src, destination
         return
 
-      context.modules = if context.module isnt 'common'
-          ['common', context.module]
-        else
-          ['common']
+      # List of modules that this module depends on - used for including JS files
+      context.modules = switch context.module
+        when 'common' then ['common']
+        else ['common', context.module]
 
       # Retrieve view content
       view = grunt.file.read file.src
