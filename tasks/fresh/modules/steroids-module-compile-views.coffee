@@ -61,15 +61,14 @@ module.exports = (grunt)->
       layoutPath: firstExistingFile layoutPaths
 
     # Android version
-    hasAndroidSource = fs.existsSync toAndroidFilepath source
-    hasAndroidLayout = !!firstExistingFile layoutPaths.map toAndroidFilepath
+    androidSource = toAndroidFilepath source
+    androidLayoutPath = firstExistingFile layoutPaths.map toAndroidFilepath
+    hasAndroidSource = fs.existsSync androidSource
+    hasAndroidLayout = !!androidLayoutPath
     if hasAndroidSource or hasAndroidLayout
       destinations[toAndroidFilepath destination] =
-        sourcePath: firstExistingFile [
-          toAndroidFilepath source
-          source
-        ]
-        layoutPath: firstExistingFile layoutPaths.map(toAndroidFilepath).concat layoutPaths
+        sourcePath: if hasAndroidSource then androidSource else source
+        layoutPath: if hasAndroidLayout then androidLayoutPath else destinations[destination].layoutPath
 
     destinations
 
