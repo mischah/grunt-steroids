@@ -13,7 +13,7 @@ module.exports = (grunt) ->
   grunt.extendConfig {
     'steroids-setup-features-splashscreen-autohide':
       dist:
-        src: 'dist/app/**/*.html'
+        src: 'dist/**/*.html'
   }
   grunt.registerMultiTask 'steroids-setup-features-splashscreen-autohide', ->
     count = 0
