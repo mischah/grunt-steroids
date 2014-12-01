@@ -1,3 +1,11 @@
+#1.0.6 (TODO)
+
+Initial commit of the Steroids²/Supersonic version of `grunt-steroids`.
+
+The library works as before for old Steroids projects. For new Supersonic projects, `grunt-steroids` handles the new module-based `app/` folder format, along with all the existing goodies.
+
+Read more about Supersonic and Steroids² in the new documentation at [http://docs.appgyver.com](http://docs.appgyver.com).
+
 #0.2.3 (2014-10-29)
 
 Do not compile SASS and SCSS files from www/components (the Bower components directory).
