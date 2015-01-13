@@ -21,7 +21,7 @@ module.exports = (grunt)->
   }
 
   grunt.registerTask "steroids-module-compile-default-native-styles", "Compile native SASS/SCSS styles from app/* to dist/", ->
-    sassFiles = grunt.file.expand(['{app, www}/native-styles/**/*.{scss, sass}'])
+    sassFiles = grunt.file.expand(['{app, www}/**/native-styles/**/*.{scss, sass}'])
 
     if sassFiles.length > 0
       console.log "Native SASS/SCSS files found, compiling..."
