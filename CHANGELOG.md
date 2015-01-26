@@ -1,4 +1,9 @@
-#1.0.6 (TODO)
+#1.0.7 (2015-01-26)
+
+Bugfixes:
+- SASS/SCSS native style files are compiled from all `app/` subfolders to `dist/native-styles`, so e.g. `app/common/native-styles/ios.scss` is compiled to `dist/native-styles/ios.css` as expected. See also [#23](https://github.com/AppGyver/grunt-steroids/issues/23) for a known issue. Shoutout to @jDeppen for the pull request!
+
+#1.0.6 (2014-12-03)
 
 Initial commit of the Steroids²/Supersonic version of `grunt-steroids`.
 
