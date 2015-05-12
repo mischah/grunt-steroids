@@ -8,27 +8,49 @@ module.exports = (grunt) ->
     ]
 
   grunt.registerTask 'steroids-compile-env-js', ->
-    envConfigFilename = "../config/env.json"
-    unless fs.existsSync envConfigFilename
-      throw new Error "Please run `cd .. && steroids module init` to create #{envConfigFilename}"
+    context = pickConfigContext()
+    envConfigFilename = "#{context.configDir}/env.json"
 
-    envConfig = grunt.file.readJSON envConfigFilename
+    if !(fs.existsSync envConfigFilename)
+      if context.isModule
+        throw new Error "Please run `cd .. && steroids module init` to create #{envConfigFilename}"
+      else
+        return
 
-    compiledEnvFile = grunt.util._.template(grunt.file.read "templates/env.js") {
-      config: envConfig
-    }
-
-    grunt.file.write "dist/env.js", compiledEnvFile
+    compileConfiguration(
+      envConfigFilename
+      "#{__dirname}/templates/env.js"
+      "dist/env.js"
+    )
 
   grunt.registerTask 'steroids-compile-appgyver-js', ->
-    moduleConfigFilename = "../config/module.json"
+    context = pickConfigContext()
+    moduleConfigFilename = "#{context.configDir}/module.json"
+
     unless fs.existsSync moduleConfigFilename
-      throw new Error "Please run `cd .. && steroids module refresh` to create #{moduleConfigFilename}"
+      if context.isModule
+        throw new Error "Please run `cd .. && steroids module refresh` to create #{moduleConfigFilename}"
+      else
+        return
 
-    moduleConfig = grunt.file.readJSON moduleConfigFilename
+    compileConfiguration(
+      moduleConfigFilename
+      "#{__dirname}/templates/appgyver.js"
+      "dist/appgyver.js"
+    )
 
-    compiledModuleFile = grunt.util._.template(grunt.file.read "templates/appgyver.js") {
-      config: moduleConfig
+  pickConfigContext = ->
+    if fs.existsSync "../config"
+      { configDir: "../config", isModule: true }
+    else if fs.existsSync "./config"
+      { configDir: "./config", isModule: false }
+    else
+      throw new Error "Must be ran in a Steroids application or a Steroids Enterprise Module"
+
+  compileConfiguration = (configPath, templatePath, distPath) ->
+    config = grunt.file.readJSON configPath
+    compiledConfig = grunt.util._.template(grunt.file.read templatePath) {
+      config: config
     }
-
-    grunt.file.write "dist/appgyver.js", compiledModuleFile
+    grunt.file.write distPath, compiledConfig
+    grunt.log.ok "Wrote #{distPath}"
