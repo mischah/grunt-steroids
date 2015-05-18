@@ -25,16 +25,16 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'steroids-compile-appgyver-js', ->
     context = pickConfigContext()
-    moduleConfigFilename = "#{context.configDir}/module.json"
+    appgyverAppConfigFilename = "#{context.configDir}/appgyver.json"
 
-    unless fs.existsSync moduleConfigFilename
+    unless fs.existsSync appgyverAppConfigFilename
       if context.isModule
-        throw new Error "Please run `cd .. && steroids module refresh` to create #{moduleConfigFilename}"
+        throw new Error "Please run `cd .. && steroids module refresh` to create #{appgyverAppConfigFilename}"
       else
         return
 
     compileConfiguration(
-      moduleConfigFilename
+      appgyverAppConfigFilename
       "#{__dirname}/templates/appgyver.js"
       "dist/appgyver.js"
     )
