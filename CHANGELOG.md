@@ -1,3 +1,8 @@
+#1.2.0 (2015-08-03)
+
+Features:
+- `steroids-make-module-env` copies installed Composer Modules installed with `steroids` to `dist/` for use with `supersonic.modules`
+
 #1.1.1 (2015-05-18)
 
 Changes:
