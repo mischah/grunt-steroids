@@ -19,13 +19,6 @@ grunt.loadNpmTasks('grunt-steroids');
 
 Note that the above line is included in your Steroids project's default `Gruntfile.js` and is required for `$ steroids connect` to work.
 
-## The "steroids-make" task
-
-Builds the `dist/` directory that is then packaged and sent to connected devices by Steroids CLI.
-
-## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
-
 ## Releasing
 
 1. Update `CHANGELOG.md`
