@@ -26,5 +26,8 @@ Builds the `dist/` directory that is then packaged and sent to connected devices
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
-## Release History
-_(Nothing yet)_
+## Releasing
+
+1) Update `CHANGELOG.md`
+2) Tag next npm version: `npm version <level>`
+3) Publish: `npm publish`
