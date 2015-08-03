@@ -28,6 +28,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Releasing
 
-1) Update `CHANGELOG.md`
-2) Tag next npm version: `npm version <level>`
-3) Publish: `npm publish`
+1. Update `CHANGELOG.md`
+2. Tag next npm version: `npm version <level>`
+3. Publish: `npm publish`
